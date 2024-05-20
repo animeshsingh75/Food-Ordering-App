@@ -1,15 +1,25 @@
-const parent = React.createElement("div", { id: "parent" }, [
-  React.createElement("div", { id: "child" }, [
-    React.createElement("h1", {}, "I am an h1 tag"),
-    React.createElement("h2", {}, "I am an h2 tag"),
-  ]),
-  React.createElement("div", { id: "child2" }, [
-    React.createElement("h1", {}, "I am an h1 tag"),
-    React.createElement("h2", {}, "I am an h2 tag"),
-  ]),
-]);
+import React from "react";
+import ReactDOM from "react-dom/client";
 
-console.log(parent);
+const elem = <span>React Element</span>;
+const TitleComponent = () => {
+  return (
+    <h1 className="head" tabIndex="5">
+      {elem}
+      Title
+    </h1>
+  );
+};
 
+const HeadingComponent = () => {
+  const number = 100;
+  return (
+    <div id="container">
+      <h2>{number + 200}</h2>
+      <TitleComponent />
+      <h1 className="heading">Hello World</h1>
+    </div>
+  );
+};
 const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(parent);
+root.render(<HeadingComponent />);
