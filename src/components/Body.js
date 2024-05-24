@@ -2,6 +2,7 @@ import { RESTAURANT_API_URL } from "../utils/constants";
 import RestaurantCard from "./RestaurantCard";
 import { useState, useEffect } from "react";
 import Shimmer from "./Shimmer";
+import { Link } from "react-router-dom";
 
 function filterData(searchText, restaurants) {
   const filterData = restaurants.filter((restaurant) =>
@@ -39,7 +40,9 @@ const Body = () => {
       setErrorMessage("");
       if (filteredRestaurants?.length === 0) {
         setFilteredRestaurants([]);
-        setErrorMessage("No restaurants found");
+        setErrorMessage(
+          "Sorry, we couldn't find any results for " + searchText
+        );
       }
     } else {
       setFilteredRestaurants(restaurants);
@@ -74,12 +77,17 @@ const Body = () => {
       </div>
       {errorMessage && <div className="error-container">{errorMessage}</div>}
       {restaurants.length === 0 ? (
-        <Shimmer></Shimmer>
+        <Shimmer />
       ) : (
         <div className="restaurant-list">
           {filteredRestaurants.map((restaurant) => {
             return (
-              <RestaurantCard key={restaurant.info.id} {...restaurant.info} />
+              <Link
+                to={"/restaurant/" + restaurant.info.id}
+                key={restaurant.info.id}
+              >
+                <RestaurantCard {...restaurant.info} />
+              </Link>
             );
           })}
         </div>
