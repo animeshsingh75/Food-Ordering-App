@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
 import {
-  IMG_CDN_URL,
+  MENU_IMG_CDN_URL,
   MENU_API_URL,
   MENU_ITEM_TYPE_KEY,
   RESTAURANT_TYPE_KEY,
 } from "../utils/constants";
 import { useParams } from "react-router-dom";
-import Shimmer, { MenuShimmer } from "./Shimmer";
+import { MenuShimmer } from "./Shimmer";
 
 const RestaurantMenu = () => {
   const [resInfo, setResInfo] = useState(null);
@@ -54,7 +54,7 @@ const RestaurantMenu = () => {
       <div className="restaurant-summary">
         <img
           className="restaurant-img"
-          src={IMG_CDN_URL + resInfo?.cloudinaryImageId}
+          src={MENU_IMG_CDN_URL + resInfo?.cloudinaryImageId}
           alt={resInfo?.name}
         />
         <div className="restaurant-summary-details">
@@ -106,7 +106,7 @@ const RestaurantMenu = () => {
                   {item.imageId && (
                     <img
                       className="menu-item-img"
-                      src={IMG_CDN_URL + item?.imageId}
+                      src={MENU_IMG_CDN_URL + item?.imageId}
                       alt={item?.name}
                     />
                   )}
