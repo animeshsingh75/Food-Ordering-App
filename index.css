@@ -926,6 +926,26 @@ a {
 
 /* Contact us page CSS End */
 
+/* Grocery Page CSS Start */
+.grocery-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.grocery-container img {
+  height: 400px;
+  width: 60rem;
+}
+
+.grocery-coming-soon {
+  margin-top: 180px;
+  height: 100%;
+  text-align: center;
+}
+/* Grocery Page CSS End */
+
 /* Login page CSS Start */
 .login-container {
   width: 380px;

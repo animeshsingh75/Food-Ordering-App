@@ -1,7 +1,6 @@
 import { Formik } from "formik";
 import * as Yup from "yup";
 import { useNavigate } from "react-router-dom";
-import { schema } from "../utils/constants";
 import useLocalStorage from "../hooks/useLocalStorage";
 import { useEffect } from "react";
 
@@ -17,8 +16,7 @@ const Login = () => {
   }, []);
 
   function handleNavigate(values) {
-    let index = values?.email.indexOf("@");
-    let name = values?.email.slice(0, index);
+    let name = values?.name;
 
     const genRandomStringNthChar = () => {
       return [...Array(100)].map(() => Math.random().toString(36)[2]).join("");
@@ -34,6 +32,9 @@ const Login = () => {
 
   //Login schema
   const schema = Yup.object().shape({
+    name: Yup.string()
+      .required("Name is required")
+      .min(2, "Name must be at least 2 characters"),
     email: Yup.string()
       .required("Email is required field")
       .email("Invalid email format"),
@@ -47,7 +48,7 @@ const Login = () => {
     <>
       <Formik
         validationSchema={schema}
-        initialValues={{ email: "", password: "" }}
+        initialValues={{ name: "", email: "", password: "" }}
         onSubmit={(values) => {
           handleNavigate(values);
         }}
@@ -64,6 +65,19 @@ const Login = () => {
             <div className="login-form">
               <form noValidate onSubmit={handleSubmit}>
                 <span>Login</span>
+                <input
+                  type="text"
+                  name="name"
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  value={values.name}
+                  placeholder="Enter your name"
+                  className="form-control inp_text"
+                  id="name"
+                />
+                <p className="error">
+                  {errors.name && touched.name && errors.name}
+                </p>
                 <input
                   type="email"
                   name="email"
