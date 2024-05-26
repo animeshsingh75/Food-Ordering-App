@@ -1,11 +1,10 @@
 import { useState } from "react";
 import burgerImage from "../assets/burgerImage.png";
 import { Link, Outlet } from "react-router-dom";
-import Profile from "./ProfileClass";
 const About = () => {
   const [show, setShow] = useState(false);
   return (
-    <div>
+    <div className="about-container-main">
       <div className="about-profile-container">
         {show ? (
           <>
