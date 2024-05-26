@@ -19,7 +19,9 @@ const RestaurantCard = ({
         <h4
           style={
             avgRatingString < 4
-              ? { backgroundColor: "red" }
+              ? { backgroundColor: "var(--light-red)" }
+              : avgRatingString === "--"
+              ? { backgroundColor: "white", color: "black" }
               : { color: "white" }
           }
         >

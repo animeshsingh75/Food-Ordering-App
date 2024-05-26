@@ -1,13 +1,10 @@
-/* Font family */
-@import url("https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&display=swap");
-
 /* Select all CSS Start*/
 * {
   margin: 0;
   padding: 0;
   overflow-x: hidden;
   box-sizing: border-box;
-  font-family: "PT Sans", "Lato", Calibri, sans-serif;
+  font-family: "PT Sans", Calibri, sans-serif;
 }
 
 /* all link CSS */
@@ -20,12 +17,14 @@ a {
 
 /* create global variable with :root selector Start*/
 :root {
-  --header-bg-color: rgb(1, 163, 144);
-  --footer-bg-color: rgb(1, 163, 144);
+  --header-bg-color: rgb(255, 255, 255);
+  --footer-bg-color: rgb(255, 255, 255);
   --body-bg-color: #e3e3e3;
   --input-bg: #f2f2f2;
   --input-bg-focus: #dbdbdb;
   --text-color: #000;
+  --light-text-color: #545454;
+  --light-text-title: #353535;
   --light-green: #00ad1d;
   --dark-green: #016034;
   --orange: #d97919;
@@ -34,6 +33,7 @@ a {
   --x-dark-orange: rgb(157, 42, 1);
   --light-red: rgb(236, 56, 56);
   --white: #fff;
+  --light-white-text: #eaeaea;
   --light-black: rgb(23, 23, 23);
   --light-blue: #0463ac;
   --dark-blue: #070062;
@@ -50,7 +50,7 @@ a {
   height: 80px;
   background-color: var(--header-bg-color);
   border-radius: 5px;
-  box-shadow: -1px 4px 20px 14px rgba(0, 0, 0, 0.2);
+  box-shadow: -2px 7px 5px -6px rgba(0, 0, 0, 0.61);
   color: var(--text-color);
   font-weight: bold;
   position: fixed;
@@ -62,7 +62,7 @@ a {
 
 .logo {
   padding: 10px 0 10px 15px;
-  width: 100px;
+  width: 90px;
 }
 
 /* nav items CSS start*/
@@ -77,22 +77,34 @@ a {
 .nav-items > ul > li {
   padding: 10px;
 }
+.nav-items > ul > li .fa-solid {
+  padding-top: 15%;
+}
 
-.nav-items > ul > li:hover {
+.nav-items > ul > li:hover,
+.nav-items > ul > li:hover .logout-btn,
+.nav-items > ul > li:hover .login-btn {
   background-color: var(--orange);
   border-radius: 5px;
   cursor: pointer;
+  color: var(--white);
 }
 
 .nav-items > ul > li .logout-btn,
 .nav-items > ul > li .login-btn {
-  color: var(--text-color);
+  color: var(--light-text-color);
   border: none;
   border-radius: 5px;
   background-color: Transparent;
   font-size: inherit;
   font-weight: 700;
   cursor: pointer;
+}
+.login-btn-green {
+  color: var(--light-green);
+}
+.login-btn-red {
+  color: var(--x-dark-orange);
 }
 
 /* nav items CSS End*/
@@ -102,34 +114,47 @@ a {
 /* Body CSS Start*/
 
 /* search container CSS Start*/
+.body-container {
+  min-height: 87vh;
+}
 .search-container {
-  margin: 100px auto 20px;
-  text-align: center;
-  max-width: 100%;
-  position: relative;
+  margin: 110px auto 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
 }
 
 .search-container .search-input {
-  width: 40%;
+  width: 30rem;
   box-sizing: border-box;
   border-bottom-left-radius: 5px;
   border-top-left-radius: 5px;
   background-color: #ffffff;
   box-shadow: 1px 2px 4px 0 rgba(0, 0, 0, 0.08);
-  padding: 14px 15px 14px 20px;
+  padding: 8px 15px 8px 12px;
   border: 1px solid #aabcca;
   border-right: 0;
   color: var(--text-color);
   outline: none;
+  font-size: large;
+  font-weight: 500;
 }
 
+.search-container .search-input:focus {
+  border-color: var(--dark-orange);
+}
+
+.search-container .search-input:placeholder-shown {
+  text-overflow: ellipsis;
+}
 .search-container .search-btn {
   border-bottom-right-radius: 5px;
   border-top-right-radius: 5px;
   background-color: var(--dark-orange);
   box-shadow: 1px 2px 4px 0 rgba(0, 0, 0, 0.08);
   color: #ffffff;
-  padding: 15px 22px;
+  padding: 12px 22px;
   margin-left: -4px;
   cursor: pointer;
   border: none;
@@ -143,7 +168,7 @@ a {
 .error-container {
   text-align: center;
   font-size: large;
-  margin: 20px 0;
+  margin: 20px 10;
 }
 /* Search error message css End*/
 
@@ -162,14 +187,21 @@ a {
 .card {
   width: 240px;
   border-radius: 5px;
-  box-shadow: -1px 5px 10px 5px rgba(42, 42, 42, 0.2);
+  box-shadow: -1px 5px 10px 5px rgba(112, 112, 112, 0.2);
   padding: 10px;
   margin: 20px;
   cursor: pointer;
 }
 
 .card:hover {
-  transform: scale(1.03);
+  transform: scale(0.98);
+}
+
+.card h3 {
+  color: var(--light-text-title);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .card > img {
@@ -179,6 +211,9 @@ a {
 
 .card > h5 {
   font-weight: lighter;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .card > span {
@@ -190,9 +225,10 @@ a {
 
 .card > span > h4 {
   font-weight: bolder;
-  font-size: 12px;
+  font-size: 14px;
   padding: 0 2px 0;
   margin-top: 10px;
+  color: var(--light-text-title);
 }
 
 .card > span > h4:first-child {
@@ -224,11 +260,13 @@ a {
   justify-content: center;
   align-items: center;
   background-color: var(--light-black);
-  color: var(--white);
+  color: var(--light-white-text);
+  overflow-y: hidden;
 }
 .restaurant-img {
-  width: 250px;
+  width: 220px;
   height: 170px;
+  margin-left: 10px;
   border-radius: 5px;
 }
 .restaurant-summary-details {
@@ -283,6 +321,11 @@ a {
 .menu-title-wrap {
   padding: 20px;
 }
+
+.menu-title-wrap .menu-title {
+  color: var(--light-text-color);
+}
+
 .menu-count {
   margin-top: 14px;
   line-height: 1.3;
@@ -309,16 +352,18 @@ a {
   flex-direction: column;
   align-self: flex-start;
   overflow: hidden;
+  height: auto;
 }
 
 .item-title {
   width: 60%;
+  color: var(--light-text-color);
 }
 .item-desc {
   margin-top: 14px;
   line-height: 1.3;
   color: rgba(40, 44, 63, 0.45);
-  width: 60%;
+  width: inherit;
   letter-spacing: -0.3px;
   font-size: 1rem;
 }
@@ -327,7 +372,7 @@ a {
   font-size: 1rem;
   font-weight: 400;
   color: #3e4152;
-  width: 40%;
+  width: inherit;
 }
 
 .menu-img-wrapper {
@@ -335,8 +380,9 @@ a {
   flex-direction: column;
   justify-content: center;
   align-items: flex-end;
-  width: 200px;
+  width: 300px;
   overflow: hidden;
+  height: auto;
 }
 .menu-item-img {
   height: 100px;
@@ -358,7 +404,7 @@ a {
 
 /*Shimmer Card CSS Start*/
 .shimmer-container {
-  margin: 100px auto 0px;
+  margin: 180px auto 0px;
   display: flex;
   flex-wrap: wrap;
   gap: 25px;
@@ -367,8 +413,7 @@ a {
 .shimmer-card {
   flex-basis: 250px;
   padding: 10px;
-  margin: 80px auto 0px;
-  margin-bottom: 10px;
+  margin-bottom: 30px;
   border-color: #d3d5df;
   box-shadow: 0 4px 7px 0 rgb(218 220 230 / 60%);
 }
@@ -469,6 +514,31 @@ a {
 }
 /*Animation to Shimmer Component Card and Menu card End*/
 
+/* User Offline CSS Start */
+.user-offline-container {
+  text-align: center;
+  padding: 20px;
+}
+
+.user-offline-heading {
+  color: #333333;
+  margin-top: 100px;
+}
+
+.offline-image {
+  width: 200px;
+  height: auto;
+  margin-top: 20px;
+}
+
+.user-offline-message {
+  color: #505050;
+  font-size: 18px;
+  margin: 20px 0px;
+}
+
+/* User Offline CSS End */
+
 /* Body CSS End*/
 
 /* Error page CSS Start */
@@ -487,8 +557,8 @@ a {
 }
 .error-page .error-back-home a {
   text-decoration: none;
-  background-color: var(--orange);
-  color: var(--light-black);
+  background-color: var(--dark-orange);
+  color: var(--white);
   padding: 10px 15px;
   border-radius: 5px;
 }
@@ -501,13 +571,13 @@ a {
 
 /* About us page CSS Start */
 .about-profile-container {
-  margin: 100px auto 0px;
+  margin: 120px auto 0px;
   text-align: center;
 }
 
 .about-profile-button {
   background-color: var(--orange);
-  color: var(--light-black);
+  color: var(--white);
   padding: 10px 15px;
   border-radius: 5px;
   border: none;
@@ -523,40 +593,47 @@ a {
 .about-container {
   display: flex;
   flex-wrap: wrap;
-  flex-direction: column;
-  margin: 10px auto 0px;
-  justify-content: center;
+  margin: 50px 25px 10px;
+  justify-content: space-evenly;
   align-items: center;
-  height: 72vh;
 }
 .about-container .about-left {
-  padding-left: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: left;
+  align-items: left;
   overflow-y: hidden;
 }
 .about-container .about-left h1 {
   font-size: 70px;
+  color: var(--light-text-color);
 }
 .about-container .about-left h1 span {
   background-color: var(--orange);
   padding: 0 10px;
   border-radius: 15px;
-  color: var(--white);
+  color: var(--light-white-text);
 }
 .about-container .about-left h4 {
   font-size: 25px;
   padding-top: 10px;
   font-style: italic;
+  color: var(--light-text-color);
 }
 .about-container .about-left h4 span {
   color: var(--dark-orange);
 }
 .about-container .about-right {
-  padding-left: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   overflow-y: hidden;
 }
 .about-container .about-right img {
   width: 500px;
-  padding-right: 70px;
 }
 
 /* About us page CSS End */
@@ -564,11 +641,12 @@ a {
 /* Profile Class page CSS Start */
 .profile-class-container {
   display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-  align-items: flex-start;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
 }
 .profile-container {
+  flex: 0.8;
   padding: 20px 10px;
   margin: 20px;
   border-radius: 5px;
@@ -589,6 +667,7 @@ a {
   margin-bottom: 30px;
 }
 .repo-container {
+  flex: 1.2;
   padding: 20px 10px;
   margin: 20px;
   border-radius: 5px;
@@ -619,17 +698,16 @@ a {
   vertical-align: middle;
   border-style: none;
   cursor: pointer;
+  margin: 5px;
 }
 .profile-user-img:hover {
   transform: scale(1.02);
 }
 .profile-user-bio {
-  font-size: 16px;
+  font-size: 18px;
   text-align: center;
   color: #575757;
-  padding-top: 20px;
-  margin-top: 0;
-  margin-bottom: 1em;
+  margin: 0px 10px;
 }
 
 /* Profile User Class page CSS End */
@@ -647,59 +725,74 @@ a {
   height: 100%;
 }
 
+.profile-repo-container .profile-repo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
 .profile-repo-container h1 {
   display: flex;
-  height: 80px;
   align-items: center;
   justify-content: center;
   border-radius: 5px;
   box-shadow: 6px 6px 10px -1px rgba(0, 0, 0, 0.71);
   background: #fafafa;
-  margin: 10px 50px 0px;
+  color: var(--dark-orange);
+  margin: 20px auto 0px;
+  padding: 10px 20px;
 }
 
 .profile-repo-container h1 a:hover {
   transform: scale(1.02);
-  color: var(--dark-orange);
+  color: var(--orange);
 }
 
 .profile-repo-container .repo-des {
-  margin: 15px 40px;
-  margin-top: 40px;
-  color: #787878;
+  margin: 30px 40px 15px;
+  color: var(--light-text-color);
 }
 .profile-repo-items {
   display: flex;
   align-items: center;
-  justify-content: space-evenly;
-  margin: 30px 10px;
-  color: #282828;
+  justify-content: space-between;
+  margin: 20px 10px;
+  color: var(--light-text-color);
 }
 .profile-repo-items h3:hover {
   transform: scale(1.02);
-  color: var(--dark-orange);
+  color: var(--orange);
 }
-.profile-repo-items h3 span {
+
+.profile-repo .profile-repo-items h3 a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0px 20px;
+}
+
+.profile-repo .profile-repo-items h3 a:hover {
+  transform: scale(1.02);
+  color: var(--orange);
+}
+
+.profile-repo-items h3 a span {
   padding-left: 5px;
 }
 /* ProfileRepo Class page CSS End */
 
 /* Social Profile Class page CSS Start */
 .social-media-container {
-  font-size: 2em;
-  text-align: center;
   width: 100%;
-  overflow-y: hidden;
 }
 
 .icon-button {
-  width: inherit;
-  margin-bottom: 10px;
-  padding: 10px;
+  margin: 0px 10px;
 }
 
 .icon-button i {
-  color: #fff;
+  color: #ffffff;
   border-radius: 50%;
   cursor: pointer;
   display: inline-block;
@@ -707,10 +800,10 @@ a {
   height: 2.6rem;
   width: 2.6rem;
   line-height: 3rem;
-  text-align: center;
-  user-select: none;
-  margin: 0 5px 10px;
   overflow-y: hidden;
+}
+.icon-button i:hover {
+  transform: scale(1.02);
 }
 .icon-button i:hover {
   transform: scale(1.02);
@@ -734,13 +827,31 @@ a {
 /* Contact us page CSS Start */
 .contact-container {
   display: flex;
-  flex-wrap: wrap;
-  margin: 100px auto 30px;
-  justify-content: space-evenly;
+  flex-direction: column;
+  margin: 60px auto 20px;
   overflow-y: hidden;
+  height: 76vh;
 }
 
-.contact-container .contact-right {
+.contact-data {
+  margin: 60px auto 20px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.contact-data .contact-left {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.contact-data .contact-left img {
+  width: 300px;
+}
+
+.contact-data .contact-right {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -748,47 +859,69 @@ a {
   font-size: x-large;
 }
 
-.contact-container .contact-right form {
+.contact-data .contact-right h1 {
+  color: var(--light-text-title);
+}
+
+.contact-data .contact-right form {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 10px;
 }
 
-.contact-container .contact-right form input {
-  padding: 10px;
-  margin: 10px;
-  border-radius: 5px;
-  box-sizing: border-box;
-  box-shadow: 1px 2px 4px 0 rgba(0, 0, 0, 0.08);
-  border: 2px solid #aabcca;
-  width: 50vh;
-}
-
-.contact-container .contact-right form textarea {
+.contact-data .contact-right form input {
   padding: 10px;
   margin: 10px;
   border-radius: 5px;
   box-sizing: border-box;
   box-shadow: 1px 2px 4px 0 rgba(0, 0, 0, 0.08);
-  border: 2px solid #aabcca;
-  width: 50vh;
+  border: 1px solid var(--dark-orange);
+  min-width: 40vw;
 }
 
-.contact-container .contact-right form button {
-  padding: 10px 15px;
+.contact-data .contact-right form textarea {
+  padding: 10px;
   margin: 10px;
-  background-color: var(--light-blue);
+  border-radius: 5px;
+  box-sizing: border-box;
+  box-shadow: 1px 2px 4px 0 rgba(0, 0, 0, 0.08);
+  border: 1px solid var(--dark-orange);
+  min-width: 40vw;
+}
+
+.contact-data .contact-right form input:focus,
+.contact-data .contact-right form textarea:focus {
+  outline: 1px outset var(--orange);
+}
+
+.contact-data .contact-right form button {
+  padding: 10px 20px;
+  margin: 10px;
+  background-color: var(--dark-orange);
   box-shadow: 1px 2px 4px 0 rgba(0, 0, 0, 0.08);
   color: #ffffff;
+  font-size: large;
   cursor: pointer;
   border: none;
   border-radius: 5px;
 }
 
-.contact-container .contact-right form button:hover {
-  background-color: var(--dark-green);
+.contact-data .contact-right form button:hover {
+  background-color: var(--orange);
+}
+.message-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.message-container span {
+  color: var(--text-color);
+  font-weight: bold;
+  text-align: center;
+  font-size: 1.2em;
 }
 
 /* Contact us page CSS End */
@@ -861,17 +994,20 @@ a {
 
 /* footer CSS Start*/
 .footer {
-  margin: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  margin-top: 45px;
   width: auto;
   text-align: center;
   background-color: var(--footer-bg-color);
-  padding: 20px 10px 20px;
-  border-radius: 5px;
-  box-shadow: -1px 4px 20px 14px rgba(0, 0, 0, 0.2);
+  padding: 15px 10px 15px;
+  box-shadow: 6px 6px 10px -1px rgba(0, 0, 0, 0.71);
 }
 
 .footer > i {
-  padding: 0 5px 0;
+  padding: 3px 5px 0;
   font-size: smaller;
 }
 
@@ -888,11 +1024,12 @@ a {
   color: darkred;
 }
 
-.footer > strong {
+.footer > a > strong {
   padding-left: 5px;
+  color: var(--text-color);
 }
 
-.footer > strong > span {
+.footer > a > strong > span {
   color: var(--x-dark-orange);
 }
 
@@ -900,7 +1037,7 @@ a {
 
 /* CSS for mobile devices */
 
-@media only screen and (max-width: 1100px) {
+@media only screen and (max-width: 1150px) {
   .about-container .about-left h1 {
     font-size: 50px;
   }
@@ -908,23 +1045,34 @@ a {
     font-size: 20px;
   }
   .about-container .about-right img {
-    padding-top: 30px;
-    width: 400px;
+    width: 380px;
   }
 }
-@media only screen and (max-width: 880px) {
+
+@media only screen and (max-width: 950px) {
   .about-container .about-left h1 {
-    font-size: 40px;
+    font-size: 45px;
   }
+
   .about-container .about-left h4 {
-    font-size: 15px;
+    font-size: 18px;
   }
+
   .about-container .about-right img {
-    padding-top: 30px;
-    width: 350px;
+    width: 330px;
   }
-  .contact-container {
-    overflow-y: hidden;
+
+  .profile-repo .profile-repo-items h3 a {
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    font-size: medium;
+  }
+}
+
+@media only screen and (max-width: 880px) {
+  .search-container .search-input {
+    width: 25rem;
   }
   .error-page img {
     height: auto;
@@ -932,87 +1080,229 @@ a {
   }
 
   .profile-class-container {
+    display: flex;
+    flex-direction: column;
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
   }
-  .profile-container {
-    width: 80%;
-  }
-  .repo-container {
-    width: 80%;
+
+  .restaurant-summary {
+    padding-left: 20px;
   }
 }
 
 @media only screen and (max-width: 650px) {
+  .header {
+    height: 70px;
+  }
+
+  .header .logo {
+    width: 80px;
+  }
+
+  .search-container {
+    margin: 90px auto 15px;
+  }
+
+  .search-container .search-input {
+    width: 20rem;
+  }
+
   .about-container .about-right img {
     width: 300px;
   }
+
+  .about-profile-container {
+    margin: 90px auto 0px;
+  }
+
+  .contact-container {
+    flex-direction: column;
+    height: 100vh;
+  }
+
+  .contact-data .contact-right form input {
+    min-width: 60vw;
+  }
+
+  .contact-data .contact-right form textarea {
+    min-width: 60vw;
+  }
 }
 
+@media only screen and (max-width: 600px) {
+  .user-name {
+    display: none;
+  }
+
+  .search-container .search-input {
+    width: 13rem;
+  }
+}
 @media only screen and (max-width: 470px) {
   .header {
     height: 60px;
   }
+
   .header .logo {
-    width: 80px;
+    width: 70px;
   }
+
   .nav-items > ul > li {
     font-size: small;
+    padding: 6px;
   }
+
   .nav-items > ul > li .logout-btn,
   .nav-items > ul > li .login-btn {
-    font-size: xx-small;
+    font-size: small;
   }
+
   .search-container {
     margin: 80px auto 0px;
   }
-  .shimmer-container {
+
+  .search-container .search-input {
+    width: 12rem;
+  }
+
+  .about-profile-container {
     margin: 80px auto 0px;
   }
+
   .restaurant-menu {
     margin-top: 60px;
   }
+
   .restaurant-summary {
     height: 230px;
+    overflow-y: hidden;
   }
-  .about-container {
-    height: auto;
+
+  .restaurant-details {
+    flex-wrap: wrap;
+    justify-content: flex-start;
   }
+
+  .restaurant-rating-slash {
+    padding: 0px 20px;
+  }
+
+  .menu-item {
+    flex-wrap: wrap;
+  }
+
+  .menu-img-wrapper {
+    padding-top: 20px;
+    align-items: flex-start;
+    justify-content: center;
+  }
+
+  .about-container .about-left h1 {
+    font-size: 35px;
+  }
+
+  .about-container .about-left h4 {
+    font-size: 12px;
+  }
+
+  .about-container .about-right img {
+    width: 250px;
+  }
+
   .login-container {
     width: 310px;
   }
+
   .login-form {
     max-width: 310px;
   }
+
+  .contact-data {
+    flex-direction: column;
+  }
+  .contact-data .contact-left img {
+    width: 200px;
+  }
+
+  .profile-repo .profile-repo-items h3 a {
+    margin: 0px 5px;
+  }
 }
+
 @media only screen and (max-width: 350px) {
   .header {
     height: 50px;
   }
   .header .logo {
-    width: 70px;
+    width: 55x;
   }
-  .nav-items > ul > li {
-    font-size: x-small;
+
+  .about-container-main {
+    min-height: 84vh;
   }
-  .nav-items > ul > li .logout-btn,
-  .nav-items > ul > li .login-btn {
-    padding: 5px;
+
+  .about-container .about-left h1 {
+    font-size: 25px;
   }
+  .about-container .about-left h4 {
+    font-size: 10px;
+  }
+
+  .about-container .about-right img {
+    width: 220px;
+  }
+
   .shimmer-container {
     margin: 70px auto 0px;
   }
   .search-container {
     margin: 70px auto 0px;
   }
+
+  .search-container .search-input {
+    width: 10rem;
+  }
+
+  .about-profile-container {
+    margin: 70px auto 0px;
+  }
+
   .restaurant-menu {
     margin-top: 50px;
   }
+
   .login-container {
     width: 280px;
   }
+
   .login-form {
     max-width: 280px;
+  }
+}
+@media only screen and (max-width: 320px) {
+  .nav-items > ul > li {
+    font-size: x-small;
+  }
+
+  .about-container .about-left h1 {
+    font-size: 22px;
+  }
+
+  .about-container .about-left h4 {
+    font-size: 8px;
+  }
+
+  .about-container .about-right img {
+    width: 170px;
+  }
+
+  .profile-repo-container .profile-repo h1 {
+    margin: 20px 15px 0px;
+  }
+
+  .profile-repo .profile-repo-items h3 a {
+    font-size: small;
   }
 }

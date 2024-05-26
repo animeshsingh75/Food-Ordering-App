@@ -1,17 +1,33 @@
 import { APP_LOGO } from "../utils/constants";
-import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import useAuth from "../hooks/useAuth";
+import useLocalStorage from "../hooks/useLocalStorage";
+import useOnline from "../hooks/useOnline";
+import { useEffect } from "react";
 const Title = () => (
-  <a href="/">
-    <img className="logo" src={APP_LOGO} alt="Food Logo" />
-  </a>
+  <Link to="/">
+    <img className="logo" src={APP_LOGO} alt="Food Fire" title="Food Fire" />
+  </Link>
 );
 const Header = () => {
-  const [isLoggedIn, setIsLoggedIn] = useState(true);
   const navigate = useNavigate();
+
+  const [getLocalStorage, , clearLocalStorage] = useLocalStorage("user");
+  const [isLoggedIn, setIsLoggedIn] = useAuth();
+
+  useEffect(() => {
+    if (getLocalStorage === null) {
+      setIsLoggedIn(false);
+    }
+  }, [getLocalStorage]);
+
+  const isOnline = useOnline();
   return (
     <div className="header">
       <Title />
+      {isLoggedIn && (
+        <div className="user-name"> Hi {getLocalStorage?.userName}! </div>
+      )}
       <div className="nav-items">
         <ul>
           <li>
@@ -32,10 +48,17 @@ const Header = () => {
               <button
                 className="logout-btn"
                 onClick={() => {
+                  clearLocalStorage();
                   setIsLoggedIn(false);
                 }}
               >
                 Logout
+                <span
+                  className={isOnline ? "login-btn-green" : "login-btn-red"}
+                >
+                  {" "}
+                  ●
+                </span>
               </button>
             ) : (
               <button
@@ -45,6 +68,12 @@ const Header = () => {
                 }}
               >
                 Login
+                <span
+                  className={isOnline ? "login-btn-green" : "login-btn-red"}
+                >
+                  {" "}
+                  ●
+                </span>
               </button>
             )}
           </li>

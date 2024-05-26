@@ -9,21 +9,28 @@ const Contact = () => {
   };
   return (
     <div className="contact-container">
-      <div className="contact-left">
-        <img src={contactUs} alt="" />
+      <div className="contact-data">
+        <div className="contact-left">
+          <img src={contactUs} alt="Contact Us" />
+        </div>
+        <div className="contact-right">
+          <h1>Contact us</h1>
+          <form onSubmit={handleSubmit}>
+            <input type="text" placeholder="Name" required />
+            <input type="email" placeholder="Email" required />
+            <textarea
+              placeholder="Type your Message here..."
+              required
+            ></textarea>
+            <button type="submit">Submit</button>
+          </form>
+        </div>
       </div>
-      <div className="contact-right">
-        <h1>Contact us</h1>
-        <form onSubmit={handleSubmit}>
-          <input type="text" placeholder="Name" required />
-          <input type="email" placeholder="Email" required />
-          <textarea placeholder="Type your Message here..." required></textarea>
-          <button type="submit">Submit</button>
-          {message && (
-            <span>Thanks for contacting FoodFire, We will reply ASAP.</span>
-          )}
-        </form>
-      </div>
+      {message && (
+        <div className="message-container">
+          <span>Thanks for contacting FoodFire, We will reply ASAP.</span>
+        </div>
+      )}
     </div>
   );
 };
