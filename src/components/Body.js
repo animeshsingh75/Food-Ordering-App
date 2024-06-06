@@ -1,6 +1,5 @@
-import { RESTAURANT_API_URL } from "../utils/constants";
-import RestaurantCard from "./RestaurantCard";
-import { useState, useEffect } from "react";
+import RestaurantCard, { withLabel } from "./RestaurantCard";
+import { useState } from "react";
 import useRestaurantData from "../hooks/useRestaurantData";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
@@ -22,6 +21,9 @@ const Body = () => {
     return <UserOffline />;
   }
 
+  const RestaurantCardWithLabel = withLabel(RestaurantCard);
+
+  console.log(restaurants);
   const searchRestaurant = (searchText, restaurants) => {
     if (searchText !== "") {
       const filteredRestaurants = filterData(searchText, restaurants);
@@ -76,7 +78,11 @@ const Body = () => {
               to={"/restaurant/" + restaurant.info.id}
               key={restaurant.info.id}
             >
-              <RestaurantCard {...restaurant?.info} />
+              {restaurant?.info?.veg ? (
+                <RestaurantCardWithLabel {...restaurant?.info} />
+              ) : (
+                <RestaurantCard {...restaurant?.info} />
+              )}
             </Link>
           );
         })}

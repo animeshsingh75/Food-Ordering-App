@@ -37,4 +37,14 @@ const RestaurantCard = ({
   );
 };
 
+export const withLabel = (RestaurantCard) => {
+  return (props) => {
+    return (
+      <div className="label-container">
+        <label className="label-badge">Vegetarian</label>
+        <RestaurantCard {...props} />
+      </div>
+    );
+  };
+};
 export default RestaurantCard;
