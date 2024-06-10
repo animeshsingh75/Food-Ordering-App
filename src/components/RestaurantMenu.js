@@ -20,7 +20,7 @@ const RestaurantMenu = () => {
   return resInfo === null && Object.keys(categorizedMenuItems).length === 0 ? (
     <MenuShimmer />
   ) : (
-    <div className="restaurant-menu">
+    <div className="min-h-[80vh] w-auto mt-20">
       <RestaurantDetails resInfo={resInfo} />
       <RestaurantCategories
         categorizedMenuItems={categorizedMenuItems}
