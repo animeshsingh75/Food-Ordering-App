@@ -34,10 +34,10 @@ const RestaurantCategories = ({
             <div className="flex flex-col justify-center">
               {categorizedMenuItems[category].map((item) => (
                 <div
-                  className="flex justify-between max-h-[250px] p-5 border-b-[rgba(40,44,63,0.45] border-b-[63,0.45)_0.5px_solid]"
+                  className=" flex sm:flex-wrap justify-between max-h-[250px] p-5 border-b-[rgba(40,44,63,0.45] border-b-[63,0.45)_0.5px_solid]"
                   key={item.id}
                 >
-                  <div className="flex flex-col self-start overflow-hidden h-auto;">
+                  <div className="flex flex-col self-start overflow-hidden h-auto">
                     <h3 className="w-3/5 text-light-text-color">
                       {item?.name}
                     </h3>
@@ -50,7 +50,7 @@ const RestaurantCategories = ({
                       {item?.description}
                     </p>
                   </div>
-                  <div className="flex flex-col justify-center items-end w-[300px] overflow-hidden h-auto">
+                  <div className="flex flex-col justify-center items-end w-[300px] overflow-hidden h-auto sm:items-start sm:justify-center sm:pt-5">
                     {item.imageId && (
                       <img
                         className="h-[100px] w-[100px] rounded-[5px]"

@@ -24,7 +24,7 @@ class ProfileRepoClass extends React.Component {
                 key={repo.id}
                 className="flex flex-col items-center justify-center"
               >
-                <h1 className="flex items-center justify-center shadow-[6px_6px_10px_-1px_rgba(0,0,0,0.71)] text-dark-orange mt-5 mb-0 mx-auto px-5 py-2.5 rounded-[5px] background: #fafafa">
+                <h1 className="flex items-center justify-center shadow-[6px_6px_10px_-1px_rgba(0,0,0,0.71)] text-dark-orange mt-5 mb-0 mx-auto px-5 py-2.5 2xs:mt-5 2xs:mb-0 2xs:mx-[15px] rounded-[5px] background: #fafafa">
                   <a
                     className="hover:text-orange hover:scale-[1.1]"
                     href={repo.html_url}
@@ -43,7 +43,7 @@ class ProfileRepoClass extends React.Component {
                     <a
                       href={html_url}
                       target="_blank"
-                      className="flex items-center justify-center mx-5 my-0 hover:text-orange hover:scale-[1.02]"
+                      className="2xs:text-[small] sm:mx-[5px] sm:my-0 flex items-center justify-center mx-5 my-0 hover:text-orange hover:scale-[1.02] xl:flex-col xl:justify-around xl:items-center xl:text-[medium]"
                       rel="noopener noreferrer"
                     >
                       <FiUsers />
@@ -54,7 +54,7 @@ class ProfileRepoClass extends React.Component {
                     <a
                       href={repo.html_url}
                       target="_blank"
-                      className="flex items-center justify-center mx-5 my-0 hover:text-orange hover:scale-[1.02]"
+                      className="2xs:text-[small] sm:mx-[5px] sm:my-0 flex items-center justify-center mx-5 my-0 hover:text-orange hover:scale-[1.02] xl:flex-col xl:justify-around xl:items-center xl:text-[medium]"
                       rel="noopener noreferrer"
                     >
                       <BiGitRepoForked />
@@ -65,7 +65,7 @@ class ProfileRepoClass extends React.Component {
                     <a
                       href={repo.html_url}
                       target="_blank"
-                      className="flex items-center justify-center mx-5 my-0 hover:text-orange hover:scale-[1.02]"
+                      className="2xs:text-[small] sm:mx-[5px] sm:my-0 flex items-center justify-center mx-5 my-0 hover:text-orange hover:scale-[1.02] xl:flex-col xl:justify-around xl:items-center xl:text-[medium]"
                       rel="noopener noreferrer"
                     >
                       <BiStar />

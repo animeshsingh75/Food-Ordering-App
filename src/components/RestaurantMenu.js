@@ -1,9 +1,7 @@
-import { MENU_IMG_CDN_URL } from "../utils/constants";
 import { useParams } from "react-router-dom";
 import { MenuShimmer } from "./Shimmer";
 import useRestaurantMenu from "../hooks/useRestaurantMenu";
 import { useState } from "react";
-import { formatPrice } from "../utils/Helper";
 import RestaurantDetails from "./RestaurantDetails";
 import RestaurantCategories from "./RestaurantCategories";
 
@@ -20,7 +18,7 @@ const RestaurantMenu = () => {
   return resInfo === null && Object.keys(categorizedMenuItems).length === 0 ? (
     <MenuShimmer />
   ) : (
-    <div className="min-h-[80vh] w-auto mt-20">
+    <div className="min-h-[80vh] w-auto sm:mt-[60px] xs:mt-[50px] mt-20">
       <RestaurantDetails resInfo={resInfo} />
       <RestaurantCategories
         categorizedMenuItems={categorizedMenuItems}

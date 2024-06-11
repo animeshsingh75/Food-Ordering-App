@@ -61,10 +61,12 @@ const Login = () => {
           handleBlur,
           handleSubmit,
         }) => (
-          <div className="login-container">
-            <div className="login-form">
+          <div className="xs:w-[280px] sm:w-[310px] w-[380px] mt-10 mb-0 mx-auto">
+            <div className="relative z-[1] xs:max-w-[280px] sm:max-w-[310px] max-w-[380px] text-center px-10 py-[25px] rounded-[10px] bg-light-orange">
               <form noValidate onSubmit={handleSubmit}>
-                <span>Login</span>
+                <span className="text-[40px] text-[#4b6cb7] block mb-[25px]">
+                  Login
+                </span>
                 <input
                   type="text"
                   name="name"
@@ -72,10 +74,10 @@ const Login = () => {
                   onBlur={handleBlur}
                   value={values.name}
                   placeholder="Enter your name"
-                  className="form-control inp_text"
+                  className="form-control inp_text w-full box-border text-sm mt-0 mb-[15px] mx-0 p-[15px] rounded-[5px] border-0 outline:none bg-input-bg focus:border-input-bg focus:ring-0 focus:outline-none"
                   id="name"
                 />
-                <p className="error">
+                <p className="text-left text-[13px] text-[red] ml-2.5 mr-0 mt-0 mb-2.5">
                   {errors.name && touched.name && errors.name}
                 </p>
                 <input
@@ -85,10 +87,10 @@ const Login = () => {
                   onBlur={handleBlur}
                   value={values.email}
                   placeholder="Enter your email"
-                  className="form-control inp_text"
+                  className="form-control inp_text w-full box-border text-sm mt-0 mb-[15px] mx-0 p-[15px] rounded-[5px] border-0 outline:none bg-input-bg focus:border-input-bg focus:ring-0 focus:outline-none"
                   id="email"
                 />
-                <p className="error">
+                <p className="text-left text-[13px] text-[red] ml-2.5 mr-0 mt-0 mb-2.5">
                   {errors.email && touched.email && errors.email}
                 </p>
                 <input
@@ -98,12 +100,17 @@ const Login = () => {
                   onBlur={handleBlur}
                   value={values.password}
                   placeholder="Enter your password"
-                  className="form-control"
+                  className="form-control w-full box-border text-sm mt-0 mb-[15px] mx-0 p-[15px] rounded-[5px] border-0 outline:none bg-input-bg focus:border-input-bg focus:ring-0 focus:outline-none"
                 />
-                <p className="error">
+                <p className="text-left text-[13px] text-[red] ml-2.5 mr-0 mt-0 mb-2.5">
                   {errors.password && touched.password && errors.password}
                 </p>
-                <button type="submit">Login</button>
+                <button
+                  type="submit"
+                  className="uppercase w-full text-footer-bg text-sm transition-all duration-[0.3] ease-[ease] cursor-pointer p-[15px] rounded-[5px] border-0 outline-none bg-[#4b6cb7] active:bg-[#395591]"
+                >
+                  Login
+                </button>
               </form>
             </div>
           </div>
