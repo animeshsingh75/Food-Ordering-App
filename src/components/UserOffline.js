@@ -2,9 +2,9 @@ import offline from "../assets/errorImage.jpg";
 
 const UserOffline = () => {
   return (
-    <div className="user-offline-container">
-      <h1 className="user-offline-heading">🔴 Offline!</h1>
-      <p className="user-offline-message">
+    <div className="text-center p-5">
+      <h1 className="text-[#333333] mt-[100px]">🔴 Offline!</h1>
+      <p className=" text-[#505050] text-lg mx-0 my-5">
         Sorry, it seems that you are currently offline.
       </p>
     </div>

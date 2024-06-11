@@ -15,14 +15,18 @@ class ProfileRepoClass extends React.Component {
     } = this.props;
     console.log(repoList);
     return (
-      <div className="profile-repo-container">
+      <div className="flex flex-col items-center justify-center overflow-hidden shadow-[6px_6px_10px_-1px_rgba(0,0,0,0.71)] h-full rounded-[5px] background: #fff">
         {repoList
           .filter((repo) => repo.name === GITHUB_REPO_NAME)
           .map((repo) => {
             return (
-              <div key={repo.id} className="profile-repo">
-                <h1>
+              <div
+                key={repo.id}
+                className="flex flex-col items-center justify-center"
+              >
+                <h1 className="flex items-center justify-center shadow-[6px_6px_10px_-1px_rgba(0,0,0,0.71)] text-dark-orange mt-5 mb-0 mx-auto px-5 py-2.5 2xs:mt-5 2xs:mb-0 2xs:mx-[15px] rounded-[5px] background: #fafafa">
                   <a
+                    className="hover:text-orange hover:scale-[1.1]"
                     href={repo.html_url}
                     target="_blank"
                     rel="noopener noreferrer"
@@ -30,37 +34,44 @@ class ProfileRepoClass extends React.Component {
                     {repo.name}
                   </a>
                 </h1>
-                <h3 className="repo-des">{repo.description}</h3>
+                <h3 className="text-light-text-color mt-[30px] mb-[15px] mx-10">
+                  {repo.description}
+                </h3>
 
-                <div className="profile-repo-items">
-                  <h3>
+                <div className="flex items-center justify-between text-light-text-color mx-2.5 my-5">
+                  <h3 className="hover:text-orange hover:scale-[1.02]">
                     <a
                       href={html_url}
                       target="_blank"
+                      className="2xs:text-[small] sm:mx-[5px] sm:my-0 flex items-center justify-center mx-5 my-0 hover:text-orange hover:scale-[1.02] xl:flex-col xl:justify-around xl:items-center xl:text-[medium]"
                       rel="noopener noreferrer"
                     >
                       <FiUsers />
-                      <span>{followers} Followers</span>
+                      <span className="pl-[5px]">{followers} Followers</span>
                     </a>
                   </h3>
-                  <h3>
+                  <h3 className="hover:text-orange hover:scale-[1.02]">
                     <a
                       href={repo.html_url}
                       target="_blank"
+                      className="2xs:text-[small] sm:mx-[5px] sm:my-0 flex items-center justify-center mx-5 my-0 hover:text-orange hover:scale-[1.02] xl:flex-col xl:justify-around xl:items-center xl:text-[medium]"
                       rel="noopener noreferrer"
                     >
                       <BiGitRepoForked />
-                      <span>{repo.forks_count} Forks</span>
+                      <span className="pl-[5px]">{repo.forks_count} Forks</span>
                     </a>
                   </h3>
-                  <h3>
+                  <h3 className="hover:text-orange hover:scale-[1.02]">
                     <a
                       href={repo.html_url}
                       target="_blank"
+                      className="2xs:text-[small] sm:mx-[5px] sm:my-0 flex items-center justify-center mx-5 my-0 hover:text-orange hover:scale-[1.02] xl:flex-col xl:justify-around xl:items-center xl:text-[medium]"
                       rel="noopener noreferrer"
                     >
                       <BiStar />
-                      <span>{repo.stargazers_count} Stars</span>
+                      <span className="pl-[5px]">
+                        {repo.stargazers_count} Stars
+                      </span>
                     </a>
                   </h3>
                 </div>

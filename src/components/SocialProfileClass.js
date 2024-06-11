@@ -9,49 +9,61 @@ class SocialProfileClass extends React.Component {
 
   render() {
     return (
-      <div className="social-media-container">
+      <div className="w-full">
         <a
           href={LINKEDIN_URL}
           title="Connect with me on Linkedin"
-          className="icon-button linkedin"
+          className="mx-2.5 my-0"
           target="_blank"
           rel="noopener noreferrer"
         >
-          <i>
-            <SiLinkedin title="Connect with me on Linkedin" />
+          <i className="text-footer-bg cursor-pointer inline-block text-[1.4rem] h-[2.6rem] w-[2.6rem] leading-[3rem] overflow-y-hidden rounded-[50%] hover:scale-[1.02 bg-[#0a66c2]">
+            <SiLinkedin
+              className="align-baseline inline-block"
+              title="Connect with me on Linkedin"
+            />
           </i>
         </a>
         <a
           href={X_URL}
           title="Follow me on X"
-          className="icon-button x"
+          className="mx-2.5 my-0"
           target="_blank"
           rel="noopener noreferrer"
         >
-          <i>
-            <SiX title="Follow me on Twitter" />
+          <i className="bg-text-color text-footer-bg cursor-pointer inline-block text-[1.4rem] h-[2.6rem] w-[2.6rem] leading-[3rem] overflow-y-hidden rounded-[50%] hover:scale-[1.02]">
+            <SiX
+              className="align-baseline inline-block"
+              title="Follow me on Twitter"
+            />
           </i>
         </a>
         <a
           href={GITHUB_URL}
           title="Follow me on Github"
-          className="icon-button github"
+          className="mx-2.5 my-0"
           target="_blank"
           rel="noopener noreferrer"
         >
-          <i>
-            <SiGithub title="Follow me on Github" />
+          <i className="bg-[#333] text-footer-bg cursor-pointer inline-block text-[1.4rem] h-[2.6rem] w-[2.6rem] leading-[3rem] overflow-y-hidden rounded-[50%] hover:scale-[1.02]">
+            <SiGithub
+              className="align-baseline inline-block"
+              title="Follow me on Github"
+            />
           </i>
         </a>
         <a
           href={EMAIL}
           title="Any Query! Mail me"
-          className="icon-button email"
+          className="mx-2.5 my-0"
           target="_blank"
           rel="noopener noreferrer"
         >
-          <i>
-            <SiGmail title="Any Query! Mail me" />
+          <i className="bg-[#ea4335] text-footer-bg cursor-pointer inline-block text-[1.4rem] h-[2.6rem] w-[2.6rem] leading-[3rem] overflow-y-hidden rounded-[50%] hover:scale-[1.02]">
+            <SiGmail
+              className="align-baseline inline-block"
+              title="Any Query! Mail me"
+            />
           </i>
         </a>
       </div>
