@@ -22,8 +22,6 @@ const Body = () => {
   }
 
   const RestaurantCardWithLabel = withLabel(RestaurantCard);
-
-  console.log(restaurants);
   const searchRestaurant = (searchText, restaurants) => {
     if (searchText !== "") {
       const filteredRestaurants = filterData(searchText, restaurants);

@@ -1,12 +1,14 @@
 import { Formik } from "formik";
 import * as Yup from "yup";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import useLocalStorage from "../hooks/useLocalStorage";
 import { useEffect } from "react";
+import FloatingMessage from "./FloatingMessage";
 
 const Login = () => {
   const navigate = useNavigate();
-
+  const location = useLocation();
+  const { showMessage, message } = location.state || {};
   const [getLocalStorage, setLocalStorage] = useLocalStorage("user");
 
   useEffect(() => {
@@ -21,7 +23,6 @@ const Login = () => {
     const genRandomStringNthChar = () => {
       return [...Array(100)].map(() => Math.random().toString(36)[2]).join("");
     };
-    console.log(genRandomStringNthChar());
     setLocalStorage({
       ...getLocalStorage,
       userName: name,
@@ -46,6 +47,7 @@ const Login = () => {
   if (getLocalStorage?.token?.length === 100) return null;
   return (
     <>
+      {showMessage && <FloatingMessage message={message} />}
       <Formik
         validationSchema={schema}
         initialValues={{ name: "", email: "", password: "" }}
