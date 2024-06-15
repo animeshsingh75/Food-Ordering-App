@@ -47,6 +47,7 @@ const Body = () => {
       <div className="mx-auto md:mt-[90px] xs:mt-[70px] sm:mt-[80px] mt-[110px] sm:mb-[0px] md:mb-[15px] mb-5 flex justify-center items-center w-full">
         <input
           type="text"
+          data-testid="searchInput"
           className="xs:w-[10rem] sm:w-[12rem] mds:w-[13rem] md:w-[20rem] lg:w-[25rem] w-[30rem] box-border bg-white shadow-[1px_2px_4px_0_rgba(0,0,0,0.08)] border text-color-text-color text-[large] font-medium pl-3 pr-[15px] py-2 rounded-tl-[5px] rounded-bl-[5px] border-r-0 border-solid border-[#aabcca] focus:border-dark-orange focus:ring-0 focus:outline-none outline:none placeholder-ellipsis"
           placeholder="Search a restaurant you want..."
           value={searchText}

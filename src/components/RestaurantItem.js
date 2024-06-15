@@ -24,7 +24,6 @@ const RestaurantItems = ({ menuItem }) => {
 
   const updateItemQuantity = (increment) => {
     if (!isLoggedIn) {
-      console.log("Login");
       navigate("/login", {
         state: {
           showMessage: true,
@@ -46,14 +45,12 @@ const RestaurantItems = ({ menuItem }) => {
     const itemExists = cart.items.some((item) => item.id === menuItem.id);
 
     if (!itemExists && updatedQuantity > 0) {
-      console.log("Add");
       const itemWithQuantity = {
         ...menuItem,
         quantity: updatedQuantity,
       };
       dispatch(addItem({ item: itemWithQuantity, restaurantId: restaurantId }));
     } else if (updatedQuantity > 0) {
-      console.log("Edit");
       dispatch(
         editItem({
           id: menuItem.id,
@@ -61,10 +58,8 @@ const RestaurantItems = ({ menuItem }) => {
         })
       );
     } else {
-      console.log("Remove");
       dispatch(removeItem(menuItem.id));
     }
-    console.log(cart.items.length);
   };
 
   const handleAddItem = () => updateItemQuantity(1);
@@ -72,7 +67,10 @@ const RestaurantItems = ({ menuItem }) => {
 
   return (
     <>
-      <div className=" flex sm:flex-wrap justify-between max-h-[250px] p-5 border-b-[rgba(40,44,63,0.45] border-b-[63,0.45)_0.5px_solid]">
+      <div
+        data-testid="menuItems"
+        className=" flex sm:flex-wrap justify-between max-h-[250px] p-5 border-b-[rgba(40,44,63,0.45] border-b-[63,0.45)_0.5px_solid]"
+      >
         <div className="flex flex-col self-start overflow-hidden h-auto">
           <h3 className="w-3/5 text-light-text-color">{menuItem?.name}</h3>
           <p className="text-base font-normal text-[#3e4152] w-[inherit] mt-1">

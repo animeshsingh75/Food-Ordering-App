@@ -72,6 +72,7 @@ const Login = () => {
                 <input
                   type="text"
                   name="name"
+                  data-testid="name"
                   onChange={handleChange}
                   onBlur={handleBlur}
                   value={values.name}
@@ -85,6 +86,7 @@ const Login = () => {
                 <input
                   type="email"
                   name="email"
+                  data-testid="email"
                   onChange={handleChange}
                   onBlur={handleBlur}
                   value={values.email}
@@ -98,6 +100,7 @@ const Login = () => {
                 <input
                   type="password"
                   name="password"
+                  data-testid="password"
                   onChange={handleChange}
                   onBlur={handleBlur}
                   value={values.password}
