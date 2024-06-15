@@ -41,6 +41,7 @@ const Cart = () => {
                 </p>
               </div>
               <button
+                data-testid="clearCart"
                 className="bg-blue-500 text-white font-bold px-[10px] flex items-center justify-center rounded hover:bg-blue-600 transition-colors duration-300 h-12"
                 onClick={() => dispatch(clearCart())}
               >
@@ -80,7 +81,7 @@ const Cart = () => {
         </>
       ) : (
         <h1 className="text-2xl font-bold text-center w-full">
-          Cart is Empty. Add items to the cart
+          Cart is Empty. Add items to the cart.
         </h1>
       )}
     </div>

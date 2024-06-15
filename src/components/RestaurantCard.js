@@ -10,7 +10,10 @@ const RestaurantCard = ({
   avgRatingString,
 }) => {
   return (
-    <div className="w-60 shadow-[-1px_5px_10px_5px_rgba(112,112,112,0.2)] cursor-pointer m-5 p-2.5 rounded-[5px] hover:scale-[0.98]">
+    <div
+      data-testid="resCard"
+      className="w-60 shadow-[-1px_5px_10px_5px_rgba(112,112,112,0.2)] cursor-pointer m-5 p-2.5 rounded-[5px] hover:scale-[0.98]"
+    >
       <img
         className="w-full rounded-[10px]"
         src={RESTAURANT_IMG_CDN_URL + cloudinaryImageId}

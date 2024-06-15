@@ -61,7 +61,10 @@ const Header = () => {
             <Link to="/cart">
               <i className="pt-[15%] fa-solid fa-cart-shopping"></i>
               {calculateQuantity() > 0 && (
-                <span className="absolute top-[5px] right-[4px]  bg-red-500 text-white rounded-full text-xs sm:text-[x-small] flex items-center justify-center w-[15px] sm:w-[10px] h-[15px] sm:h-[10px] xs:w-[8px] xs:h-[8px]">
+                <span
+                  data-testid="cartQuantity"
+                  className="absolute top-[5px] right-[4px]  bg-red-500 text-white rounded-full text-xs sm:text-[x-small] flex items-center justify-center w-[15px] sm:w-[10px] h-[15px] sm:h-[10px] xs:w-[8px] xs:h-[8px]"
+                >
                   {calculateQuantity()}
                 </span>
               )}
@@ -90,6 +93,7 @@ const Header = () => {
               </button>
             ) : (
               <button
+                data-testid="loginBtn"
                 className="bg-transparent text-light-text-color font-bold cursor-pointer rounded-md sm:text-[small] 2xs:text-[x-small]"
                 onClick={() => {
                   navigate("/login");

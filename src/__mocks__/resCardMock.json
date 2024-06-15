@@ -1,0 +1,12 @@
+{
+  "id": "89570",
+  "name": "UBQ by Barbeque Nation",
+  "cloudinaryImageId": "vofx8meamumsisbw7413",
+  "areaName": "Sector 62",
+  "costForTwo": "₹300 for two",
+  "cuisines": ["Barbecue", "Biryani", "Kebabs", "Mughlai", "Desserts"],
+  "avgRatingString": "4.1",
+  "sla": {
+    "lastMileTravelString": "2.6 km"
+  }
+}
