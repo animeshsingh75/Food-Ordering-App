@@ -70,7 +70,7 @@ Contributions are what make the open source community such an amazing place to l
 
 Your Name - [animeshsingh75@gmail.com](mailto:animeshsingh75@gmail.com)
 
-Project Link: [https://food-ordering-app-two-coral.vercel.app/](https://food-ordering-app-two-coral.vercel.app/)
+Project Link: [https://foodfire-animesh.vercel.app/](https://foodfire-animesh.vercel.app/)
 
 ---
 
